@@ -1,7 +1,19 @@
 //Update the name of the controller below and rename the file.
-const template = require("../controllers/template.js")
+const index = require("../controllers/index.js")
+const authors = require("../controllers/authors.js")
 module.exports = function(app){
 
-  app.get('/', template.index);
+//Books
+  app.get('/', index.index);
+  app.get("/newbook", index.newBook);
+  app.post("/newbook", index.addBook);
 
+
+//authors
+app.get('/authors', authors.index);
+app.post('/authors', authors.newAuthor);
+
+
+//individual
+app.get('/individual/:id', index.individualBook);
 }

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Individual</title>
+  </head>
+  <body>
+
+  <h1><%= book.name %></h1>
+  <img src="<%= book.img_url %>" alt="">
+  <p><%= book.description %></p>
+
+
+  <form action="/comments" method="post">
+    <input type="text" name="name" placeholder="Name">
+    <input type="text" name="comment" placeholder="Comment">
+    <a href="/comments">Add</a>
+  </form>
+
+  </body>
+</html>
