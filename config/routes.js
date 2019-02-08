@@ -1,19 +1,44 @@
-//Update the name of the controller below and rename the file.
-const index = require("../controllers/index.js")
-const authors = require("../controllers/authors.js")
-module.exports = function(app){
-
-//Books
-  app.get('/', index.index);
-  app.get("/newbook", index.newBook);
-  app.post("/newbook", index.addBook);
+const users = require("../controllers/users.js")
+const situations = require("../controllers/situations.js")
+const comments = require("../controllers/comments.js")
+const login_register = require("../controllers/login_register.js")
+const categories = require("../controllers/categories.js")
+const solution_rating = require("../controllers/solution_rating.js")
 
 
-//authors
-app.get('/authors', authors.index);
-app.post('/authors', authors.newAuthor);
+
+module.exports = (app) => {
+
+    //USERS
+    app.get('/users', users.getAllUsers);
+    app.patch('/users/:id', users.editUser);
+    app.delete('user/delete/:id', users.deleteUser);
+
+    //SITUATIONS
+    app.get('/situations', situations.getAllSituations);
+    app.post('/situations/addSituation', situations.addSituation);
+    app.patch('/situations/editSituation/:id', situations.editSituation);
+    app.delete('/situations/deleteSituation/:id', situations.deleteSituation);
 
 
-//individual
-app.get('/individual/:id', index.individualBook);
+    //COMMENTS
+    app.get('/comments', comments.getAllComments);
+    app.post('/comments/addComment', comments.addComment);
+    app.patch('/comments/editComment/:id', comments.editComment);
+    app.delete('/comments/delete/:id', comments.deleteComment)
+
+
+    //LOGIN_REGISTER
+    app.post('/login', login_register.login);
+    app.get('/register', login_register.register);
+
+
+
+    //CATEGORIES
+    app.get('/categories', categories.getAllCategories);
+
+
+    //SOLUTION_RATING
+    app.get('/solutionRating', solution_rating.getAllSolutions);
+
 }
